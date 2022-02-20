@@ -10,9 +10,15 @@ With this plugin, the completion menu items are more aligned with the vscode com
 
 ## Using nvim-lsp on c++ file
 
+![image](https://user-images.githubusercontent.com/38927155/154865731-634f40ab-1781-4280-aeca-ec6ed8506cca.png)
+
 ## Using nvim-insert-text-lsp on c++ file
 
+<img width="808" alt="image" src="https://user-images.githubusercontent.com/38927155/154865868-5f185233-b8db-499b-a318-1402699e0482.png">
+
 ## Using vscode on c++ file
+
+<img width="755" alt="image" src="https://user-images.githubusercontent.com/38927155/154865896-d7df83d0-d88a-4c09-9b75-4c16580d6613.png">
 
 # Setup
 
