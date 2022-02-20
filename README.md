@@ -1,26 +1,32 @@
-# cmp-nvim-lsp
+# cmp-nvim-insert-text-lsp
 
-nvim-cmp source for neovim's built-in language server client.
+nvim-cmp source for neovim's built-in language server client. This source is a fork from [cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp)
+but instead of using label as the completion item text in cmp, it uses the insert text as the completion item text. 
+In other words, what you see in the cmp completion menu is what will be inserted as text.
 
-# Capabilities
+This is useful for language server such as `clangd`, where even when you disable the snippet support, 
+the completion item text still shows parenthesis and typed arguments, which I found quite distracting.
+With this plugin, the completion menu items are more aligned with the vscode completion menu items.
 
-Language servers provide different completion results depending on the capabilities of the client. Neovim's default omnifunc has basic support for serving completion candidates. nvim-cmp supports more types of completion candidates, so users must override the capabilities sent to the server such that it can provide these candidates during a completion request. These capabilities are provided via the helper function `require('cmp_nvim_lsp').update_capabilities` 
+## Using nvim-lsp on c++ file
 
-As these candidates are sent on each request, **adding these capabilities will break the built-in omnifunc support for neovim's language server client**. `nvim-cmp` provides manually triggered completion that can replace omnifunc. See `:help cmp-faq` for more details.
+## Using nvim-insert-text-lsp on c++ file
+
+## Using vscode on c++ file
 
 # Setup
 
 ```lua
-
-require'cmp'.setup {
+-- This setup the source only for c++
+require'cmp'.setup.filetype({ "cpp" }, {
   sources = {
-    { name = 'nvim_lsp' }
+    { name = 'nvim_insert_text_lsp' }
   }
-}
+})
 
--- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
+-- This enable all the capabilities except for snippet support
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities = require('cmp_nvim_insert_text_lsp').update_capabilities(capabilities)
 
 -- The following example advertise capabilities to `clangd`.
 require'lspconfig'.clangd.setup {
