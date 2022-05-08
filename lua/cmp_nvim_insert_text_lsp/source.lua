@@ -39,9 +39,11 @@ source.complete = function(self, request, callback)
 	params.context.triggerKind = request.completion_context.triggerKind
 	params.context.triggerCharacter = request.completion_context.triggerCharacter
 	self:_request("textDocument/completion", params, function(_, response)
-		for _, v in pairs(response.items) do
-			v.label = v.insertText
-		end
+    if response ~= nil then
+      for _, v in pairs(response.items) do
+        v.label = v.insertText
+      end
+    end
 		callback(response)
 	end)
 end
