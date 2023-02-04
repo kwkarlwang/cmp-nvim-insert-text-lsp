@@ -10,7 +10,7 @@ end
 ---Get debug name.
 ---@return string
 source.get_debug_name = function(self)
-	return table.concat({ "nvim_lsp", self.client.name }, ":")
+	return table.concat({ "nvim_insert_text_lsp", self.client.name }, ":")
 end
 
 ---Return the source is available.
